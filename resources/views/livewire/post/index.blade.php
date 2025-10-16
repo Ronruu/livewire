@@ -26,24 +26,24 @@ Data Posts Belajar Livewire
                     </thead>
                     <tbody>
                         @forelse ($posts as $post)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
+    <tr>
+        <td>{{ $loop->iteration }}</td>
+        <td>{{ $post->name }}</td>
+        <td>{{ $post->content }}</td>
+        <td>
+            <img src="{{ asset('storage/posts/'.$post->image) }}" width="100">
+        </td>
+        <td>
+            <a href="/edit/{{ $post->id }}" wire:navigate class="btn btn-sm btn-primary">EDIT</a>
+            <button class="btn btn-sm btn-danger">DELETE</button>
+        </td>
+    </tr>
+@empty
+    <tr>
+        <td colspan="5" class="text-center text-danger">Data Post belum tersedia.</td>
+    </tr>
+@endforelse
 
-                       
-                            <td>{{ $post->name }}</td>
-                        
-                            <td>{{ $post->content }}</td>
-
-                            <td><img src="{{ asset('/storage/posts/'.$post->image) }}" class="rounded" style="width: 150px"></td>
-
-                            <a href="/edit/{{ $post->id }}" wire:navigate></a>
-                            <button class="btn btn-sm btn-danger mb-3">DELETE</button>
-                        </tr>
-                        @empty
-                            <div class="alert alert-danger">
-                                Data Post belum Tersedia.
-                            </div>
-                            @endforelse
                     </tbody>
                 </table>
             </div>

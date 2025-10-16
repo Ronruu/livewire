@@ -36,13 +36,14 @@ class Create extends Component
         $this->validate();
 
         //store image in storage/app/public/posts
-        $this->image->storeAs('public/posts', $this->image->hashName());
+        $this->image->storeAs('posts', $this->image->hashName() , 'public');
 
         //create post
         Post::create([
-            'image' => $this->image->hashName(),
             'name' => $this->name,
             'content' => $this->content,
+            'image' => $this->image->hashName(),
+            
         ]);
 
         //flash message
