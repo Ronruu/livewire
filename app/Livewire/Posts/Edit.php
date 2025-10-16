@@ -18,7 +18,7 @@ class Edit extends Component
     public $image;
 
     #[Rule('required', message: 'Masukkan Judul Post')]
-    public $title;
+    public $name;
 
     #[Rule('required', message: 'Masukkan Isi Post')]
     #[Rule('min:3', message: 'Isi Post Minimal 3 Karakter')]
@@ -31,7 +31,7 @@ class Edit extends Component
 
         //assign
         $this->postID   = $post->id;
-        $this->title    = $post->title;
+        $this->name    = $post->name;
         $this->content  = $post->content;
     }
 
@@ -51,19 +51,19 @@ class Edit extends Component
         if ($this->image) {
 
             //store image in storage/app/public/posts
-            $this->image->storeAs('public/posts', $this->image->hashName());
+            $this->image->storeAs('posts', $this->image->hashName(), 'public');
 
             //update post
             $post->update([
                 'image' => $this->image->hashName(),
-                'title' => $this->title,
+                'name' => $this->name,
                 'content' => $this->content,
             ]);
         } else {
 
             //update post
             $post->update([
-                'title' => $this->title,
+                'name' => $this->name,
                 'content' => $this->content,
             ]);
         }

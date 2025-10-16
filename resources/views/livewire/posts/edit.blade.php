@@ -24,10 +24,10 @@ Edit Post - Belajar Livewire 3 di SantriKoding.com
 
                         <div class="form-group mb-4">
                             <label class="fw-bold">JUDUL</label>
-                            <input type="text" class="form-control @error('title') is-invalid @enderror" wire:model="title" placeholder="Masukkan Judul Post">
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" wire:model="name" placeholder="Masukkan Judul Post">
 
                             <!-- error message untuk title -->
-                            @error('title')
+                            @error('name')
                             <div class="alert alert-danger mt-2">
                                 {{ $message }}
                             </div>
